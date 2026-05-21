@@ -11,13 +11,13 @@ export default function DynamicForm({ formData, action }: DynamicFormProps) {
   return (
     <form action={action}>
       <h1>{createTextString(name)}</h1>
-      {elements.map(({ options, field, element }: Element) => {
+      {elements.map(({ config, field, element }: Element) => {
         const key = `${element}-${field}`
         switch (element) {
           case "input":
-            return <Input key={key} field={field} options={options} />
+            return <Input key={key} field={field} config={config} />
           case "checkbox":
-            return <CheckboxGroup key={key} field={field} options={options} />
+            return <CheckboxGroup key={key} field={field} config={config} />
           default:
             return <p>Component has not been made...YET</p>
         }

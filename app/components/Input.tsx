@@ -1,16 +1,16 @@
 import { createTextString } from "../utils"
 
 type InputProps = {
-  options: object
+  config: object
   field: string
 }
 
-export default function Input({ options, field }: InputProps) {
+export default function Input({ config, field }: InputProps) {
   return (
     <>
       <label htmlFor={field}>{createTextString(field)}</label>
       <br />
-      <input id={field} name={field} {...options} />
+      <input id={field} name={field} {...config} />
       <br />
     </>
   )

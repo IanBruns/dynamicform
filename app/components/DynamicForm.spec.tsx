@@ -7,8 +7,8 @@ const mockLoginFormData = {
   id: 1,
   name: "login",
   elements: [
-    { options: { type: "text" }, field: "username", element: "input" },
-    { options: { type: "password" }, field: "password", element: "input" },
+    { config: { type: "text" }, field: "username", element: "input" },
+    { config: { type: "password" }, field: "password", element: "input" },
   ],
 } satisfies DynamicFormData
 
@@ -19,7 +19,7 @@ const mockCheckboxFormData = {
     {
       element: "checkbox",
       field: "checkBoxDemo",
-      options: { checkboxOptions: ["foo", "bar", "baz"] },
+      config: { checkboxOptions: ["foo", "bar", "baz"] },
     },
   ],
 } satisfies DynamicFormData
