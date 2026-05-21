@@ -32,23 +32,23 @@ describe("DynamicForm", () => {
 
   it("renders", () => {
     render(<DynamicForm {...props} />)
-    expect(screen.getByText("login")).toBeInTheDocument()
-    expect(screen.getByLabelText("username")).toBeInTheDocument()
-    expect(screen.getByLabelText("password")).toBeInTheDocument()
+    expect(screen.getByText("Login")).toBeInTheDocument()
+    expect(screen.getByLabelText("Username")).toBeInTheDocument()
+    expect(screen.getByLabelText("Password")).toBeInTheDocument()
   })
 
   it("records and submits data", async () => {
     render(<DynamicForm {...props} />)
-    await userEvent.type(screen.getByLabelText("username"), "foo")
-    await userEvent.type(screen.getByLabelText("password"), "bar")
+    await userEvent.type(screen.getByLabelText("Username"), "foo")
+    await userEvent.type(screen.getByLabelText("Password"), "bar")
     await userEvent.click(screen.getByText("Submit"))
     expect(props.action).toHaveBeenCalled()
   })
 
   it("records and submits checkboxes", async () => {
     render(<DynamicForm {...props} formData={mockCheckboxFormData} />)
-    expect(screen.getByText("checkbox")).toBeInTheDocument()
-    await userEvent.click(screen.getByLabelText("foo"))
+    expect(screen.getByText("Checkbox")).toBeInTheDocument()
+    await userEvent.click(screen.getByLabelText("Foo"))
     expect(props.action).toHaveBeenCalled()
   })
 })

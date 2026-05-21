@@ -3,8 +3,10 @@ import LoginForm from "./LoginForm"
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div>Loading loading form ...</div>}>
-      <LoginForm />
-    </Suspense>
+    <main className="min-h-screen flex flex-col items-center">
+      <Suspense fallback={<div>Loading loading form ...</div>}>
+        <LoginForm />
+      </Suspense>
+    </main>
   )
 }
