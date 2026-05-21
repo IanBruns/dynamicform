@@ -1,15 +1,28 @@
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import DynamicForm from "./DynamicForm"
+import { DynamicFormData } from "../types"
 
 const mockLoginFormData = {
   id: 1,
   name: "login",
   elements: [
-    { options: { type: "username" }, field: "username", element: "input" },
+    { options: { type: "text" }, field: "username", element: "input" },
     { options: { type: "password" }, field: "password", element: "input" },
   ],
-}
+} satisfies DynamicFormData
+
+const mockCheckboxFormData = {
+  id: 2,
+  name: "checkbox",
+  elements: [
+    {
+      element: "checkbox",
+      field: "checkBoxDemo",
+      options: { checkboxOptions: ["foo", "bar", "baz"] },
+    },
+  ],
+} satisfies DynamicFormData
 
 describe("DynamicForm", () => {
   const props = {
@@ -29,6 +42,13 @@ describe("DynamicForm", () => {
     await userEvent.type(screen.getByLabelText("username"), "foo")
     await userEvent.type(screen.getByLabelText("password"), "bar")
     await userEvent.click(screen.getByText("Submit"))
+    expect(props.action).toHaveBeenCalled()
+  })
+
+  it("records and submits checkboxes", async () => {
+    render(<DynamicForm {...props} formData={mockCheckboxFormData} />)
+    expect(screen.getByText("checkbox")).toBeInTheDocument()
+    await userEvent.click(screen.getByLabelText("foo"))
     expect(props.action).toHaveBeenCalled()
   })
 })

@@ -1,21 +1,8 @@
 "use client"
 
 import Input from "./Input"
-
-type Element = {
-  options: Record<string, unknown>
-  field: string
-  element: string
-}
-
-type DynamicFormProps = {
-  formData: {
-    id: number
-    name: string
-    elements: Element[]
-  }
-  action: (formData: FormData) => void
-}
+import CheckboxGroup from "./CheckboxGroup"
+import { DynamicFormProps, Element } from "../types"
 
 export default function DynamicForm({ formData, action }: DynamicFormProps) {
   const { name, elements } = formData
@@ -24,15 +11,14 @@ export default function DynamicForm({ formData, action }: DynamicFormProps) {
     <form action={action}>
       <p>{name}</p>
       {elements.map(({ options, field, element }: Element) => {
+        const key = `${element}-${field}`
         switch (element) {
           case "input":
-            return (
-              <Input
-                key={`${options.type}-${field}`}
-                field={field}
-                options={options}
-              />
-            )
+            return <Input key={key} field={field} options={options} />
+          case "checkbox":
+            return <CheckboxGroup key={key} field={field} options={options} />
+          default:
+            return <p>Component has not been made...YET</p>
         }
       })}
       <input type="submit" value="Submit" />

@@ -1,5 +1,5 @@
 type InputProps = {
-  options: Record<string, unknown>
+  options: object
   field: string
 }
 
