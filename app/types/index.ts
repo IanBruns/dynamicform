@@ -1,7 +1,7 @@
 export type CheckboxGroupElement = {
   element: "checkbox"
   field: string
-  options: {
+  config: {
     checkboxOptions: string[]
   }
 }
@@ -9,7 +9,7 @@ export type CheckboxGroupElement = {
 export type InputElement = {
   element: "input"
   field: string
-  options: object
+  config: object
 }
 
 export type Element = CheckboxGroupElement | InputElement
