@@ -14,11 +14,11 @@ const mockLoginFormData = {
 
 const mockCheckboxFormData = {
   id: 2,
-  name: "checkbox",
+  name: "checkboxDemo",
   elements: [
     {
       element: "checkbox",
-      field: "checkBoxDemo",
+      field: "options",
       config: { checkboxOptions: ["foo", "bar", "baz"] },
     },
   ],
@@ -33,21 +33,22 @@ describe("DynamicForm", () => {
   it("renders", () => {
     render(<DynamicForm {...props} />)
     expect(screen.getByText("Login")).toBeInTheDocument()
-    expect(screen.getByLabelText("Username")).toBeInTheDocument()
-    expect(screen.getByLabelText("Password")).toBeInTheDocument()
+    expect(screen.getByLabelText("Username:")).toBeInTheDocument()
+    expect(screen.getByLabelText("Password:")).toBeInTheDocument()
   })
 
   it("records and submits data", async () => {
     render(<DynamicForm {...props} />)
-    await userEvent.type(screen.getByLabelText("Username"), "foo")
-    await userEvent.type(screen.getByLabelText("Password"), "bar")
+    await userEvent.type(screen.getByLabelText("Username:"), "foo")
+    await userEvent.type(screen.getByLabelText("Password:"), "bar")
     await userEvent.click(screen.getByText("Submit"))
     expect(props.action).toHaveBeenCalled()
   })
 
   it("records and submits checkboxes", async () => {
     render(<DynamicForm {...props} formData={mockCheckboxFormData} />)
-    expect(screen.getByText("Checkbox")).toBeInTheDocument()
+    expect(screen.getByText("Checkbox Demo")).toBeInTheDocument()
+    expect(screen.getByText("Options:"))
     await userEvent.click(screen.getByLabelText("Foo"))
     expect(props.action).toHaveBeenCalled()
   })

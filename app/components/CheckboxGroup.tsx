@@ -11,7 +11,7 @@ type CheckboxGroupProps = {
 export default function CheckboxGroup({ field, config }: CheckboxGroupProps) {
   return (
     <fieldset>
-      <legend>{createTextString(field)}</legend>
+      <legend>{createTextString(field)}:</legend>
       {config.checkboxOptions.map((option: string) => (
         <Fragment key={option}>
           <input id={option} name={field} value={option} type="checkbox" />
