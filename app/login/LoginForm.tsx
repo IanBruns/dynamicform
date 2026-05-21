@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import DynamicForm from "../components/DynamicForm"
+import EmptyState from "../components/EmptyState"
 
 export default async function LoginForm() {
   const supabase = await createClient()
@@ -16,5 +17,9 @@ export default async function LoginForm() {
     console.log(data)
   }
 
-  return <DynamicForm formData={loginFormData} action={submit} />
+  return loginFormData.id ? (
+    <DynamicForm formData={loginFormData} action={submit} />
+  ) : (
+    <EmptyState />
+  )
 }

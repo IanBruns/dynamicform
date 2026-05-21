@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import DynamicForm from "../components/DynamicForm"
+import EmptyState from "../components/EmptyState"
 
 export default async function DemographicsForm() {
   const supabase = await createClient()
@@ -41,5 +42,9 @@ export default async function DemographicsForm() {
     console.log(packagedData)
   }
 
-  return <DynamicForm formData={demographicFormData} action={submit} />
+  return demographicFormData.id ? (
+    <DynamicForm formData={demographicFormData} action={submit} />
+  ) : (
+    <EmptyState />
+  )
 }
