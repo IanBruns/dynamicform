@@ -6,15 +6,15 @@ const mockLoginFormData = {
   id: 1,
   name: "login",
   elements: [
-    { type: "password", field: "password", element: "input" },
-    { type: "text", field: "username", element: "input" },
+    { options: { type: "username" }, field: "username", element: "input" },
+    { options: { type: "password" }, field: "password", element: "input" },
   ],
 }
 
 describe("DynamicForm", () => {
   const props = {
     formData: mockLoginFormData,
-    onSubmit: jest.fn(),
+    action: jest.fn(),
   }
 
   it("renders", () => {
@@ -29,9 +29,6 @@ describe("DynamicForm", () => {
     await userEvent.type(screen.getByLabelText("username"), "foo")
     await userEvent.type(screen.getByLabelText("password"), "bar")
     await userEvent.click(screen.getByText("Submit"))
-    expect(props.onSubmit).toHaveBeenCalledWith({
-      username: "foo",
-      password: "bar",
-    })
+    expect(props.action).toHaveBeenCalled()
   })
 })

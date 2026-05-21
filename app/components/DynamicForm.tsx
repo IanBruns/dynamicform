@@ -1,10 +1,9 @@
 "use client"
 
-import { ChangeEvent } from "react"
 import Input from "./Input"
 
 type Element = {
-  type: string
+  options: Record<string, unknown>
   field: string
   element: string
 }
@@ -15,26 +14,25 @@ type DynamicFormProps = {
     name: string
     elements: Element[]
   }
-  onSubmit: (formData: Record<string, unknown>) => void
+  action: (formData: FormData) => void
 }
 
-export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
+export default function DynamicForm({ formData, action }: DynamicFormProps) {
   const { name, elements } = formData
 
-  function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const submitData = Object.fromEntries(formData.entries())
-    onSubmit(submitData)
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form action={action}>
       <p>{name}</p>
-      {elements.map(({ type, field, element }: Element) => {
+      {elements.map(({ options, field, element }: Element) => {
         switch (element) {
           case "input":
-            return <Input key={`${type}-${field}`} type={type} field={field} />
+            return (
+              <Input
+                key={`${options.type}-${field}`}
+                field={field}
+                options={options}
+              />
+            )
         }
       })}
       <input type="submit" value="Submit" />
