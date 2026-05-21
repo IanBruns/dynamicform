@@ -15,7 +15,7 @@ type DynamicFormProps = {
     name: string
     elements: Element[]
   }
-  onSubmit: (formData: unknown) => void
+  onSubmit: (formData: Record<string, unknown>) => void
 }
 
 export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {

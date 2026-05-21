@@ -10,5 +10,9 @@ export default async function LoginForm() {
     .eq("name", "login")
     .single()
 
-  return <DynamicForm formData={loginFormData} />
+  function handleSubmit(newFormData: Record<string, unknown>) {
+    console.log(newFormData)
+  }
+
+  return <DynamicForm formData={loginFormData} onSubmit={handleSubmit} />
 }
