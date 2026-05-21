@@ -25,3 +25,5 @@ If I had more time I would have created a form using `<DynamicForm />` that coul
 I would love for the ability to pass custom stylesheets, currently you can throw a `className` into the `config` in the form table and that would take, but since the components have their own label just putting in classNames affects the entire element, not just what you think it does. However the config does allow for us to open up to that constraint
 
 I think with more time I would also add more components to the table and with that create more forms to demo
+
+I would also want to spend more time on the form control. While we can use the native required field on input elements, would want to spend more time making sure that the submit button cannot send until required fields have been filled out
