@@ -1,3 +1,6 @@
+"use client"
+
+import { ChangeEvent } from "react"
 import Input from "./Input"
 
 type Element = {
@@ -12,12 +15,21 @@ type DynamicFormProps = {
     name: string
     elements: Element[]
   }
+  onSubmit: (formData: unknown) => void
 }
 
-export default function DynamicForm({ formData }: DynamicFormProps) {
+export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
   const { name, elements } = formData
+
+  function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const submitData = Object.fromEntries(formData.entries())
+    onSubmit(submitData)
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <p>{name}</p>
       {elements.map(({ type, field, element }: Element) => {
         switch (element) {
@@ -25,6 +37,7 @@ export default function DynamicForm({ formData }: DynamicFormProps) {
             return <Input key={`${type}-${field}`} type={type} field={field} />
         }
       })}
+      <input type="submit" value="Submit" />
     </form>
   )
 }

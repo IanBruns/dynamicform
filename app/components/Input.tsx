@@ -8,7 +8,7 @@ export default function Input({ type, field }: InputProps) {
     <>
       <label htmlFor={field}>{field}</label>
       <br />
-      <input id={field} type={type} />
+      <input id={field} name={field} type={type} />
       <br />
     </>
   )
