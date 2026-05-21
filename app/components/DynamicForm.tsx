@@ -10,7 +10,7 @@ export default function DynamicForm({ formData, action }: DynamicFormProps) {
 
   return (
     <form action={action}>
-      <h1>{createTextString(name)}</h1>
+      <h1 className="text-2xl font-semibold">{createTextString(name)}</h1>
       {elements.map(({ config, field, element }: Element) => {
         const key = `${element}-${field}`
         switch (element) {
@@ -22,7 +22,11 @@ export default function DynamicForm({ formData, action }: DynamicFormProps) {
             return <p>Component has not been made...YET</p>
         }
       })}
-      <input type="submit" value="Submit" />
+      <input
+        className="border rounded border-black p-2 mt-2 hover:bg-slate-400"
+        type="submit"
+        value="Submit"
+      />
     </form>
   )
 }

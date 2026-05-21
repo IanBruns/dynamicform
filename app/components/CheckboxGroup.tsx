@@ -14,7 +14,13 @@ export default function CheckboxGroup({ field, config }: CheckboxGroupProps) {
       <legend>{createTextString(field)}:</legend>
       {config.checkboxOptions.map((option: string) => (
         <Fragment key={option}>
-          <input id={option} name={field} value={option} type="checkbox" />
+          <input
+            className="mr-2"
+            id={option}
+            name={field}
+            value={option}
+            type="checkbox"
+          />
           <label htmlFor={option}>{createTextString(option)}</label>
           <br />
         </Fragment>

@@ -3,8 +3,18 @@ import Link from "next/link"
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center">
-      <Link href="/login">Login Page Demo</Link>
-      <Link href="/demographics">Demographics Page Demo</Link>
+      <Link
+        className="text-blue-700 underline hover:text-red-700"
+        href="/login"
+      >
+        Login Page Demo
+      </Link>
+      <Link
+        className="text-blue-700 underline hover:text-red-700"
+        href="/demographics"
+      >
+        Demographics Page Demo
+      </Link>
     </main>
   )
 }
