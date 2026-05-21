@@ -1,10 +1,10 @@
 import { Suspense } from "react"
-import LoginForm from "./LoginForm"
+import DemographicsForm from "./DemographicsForm"
 
-export default function LoginPage() {
+export default function DemographicsPage() {
   return (
     <Suspense fallback={<div>Loading loading form ...</div>}>
-      <LoginForm />
+      <DemographicsForm />
     </Suspense>
   )
 }

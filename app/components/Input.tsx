@@ -1,14 +1,14 @@
 type InputProps = {
-  type: string
+  options: object
   field: string
 }
 
-export default function Input({ type, field }: InputProps) {
+export default function Input({ options, field }: InputProps) {
   return (
     <>
       <label htmlFor={field}>{field}</label>
       <br />
-      <input id={field} name={field} type={type} />
+      <input id={field} name={field} {...options} />
       <br />
     </>
   )

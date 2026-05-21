@@ -1,40 +1,24 @@
 "use client"
 
-import { ChangeEvent } from "react"
 import Input from "./Input"
+import CheckboxGroup from "./CheckboxGroup"
+import { DynamicFormProps, Element } from "../types"
 
-type Element = {
-  type: string
-  field: string
-  element: string
-}
-
-type DynamicFormProps = {
-  formData: {
-    id: number
-    name: string
-    elements: Element[]
-  }
-  onSubmit: (formData: Record<string, unknown>) => void
-}
-
-export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
+export default function DynamicForm({ formData, action }: DynamicFormProps) {
   const { name, elements } = formData
 
-  function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const submitData = Object.fromEntries(formData.entries())
-    onSubmit(submitData)
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form action={action}>
       <p>{name}</p>
-      {elements.map(({ type, field, element }: Element) => {
+      {elements.map(({ options, field, element }: Element) => {
+        const key = `${element}-${field}`
         switch (element) {
           case "input":
-            return <Input key={`${type}-${field}`} type={type} field={field} />
+            return <Input key={key} field={field} options={options} />
+          case "checkbox":
+            return <CheckboxGroup key={key} field={field} options={options} />
+          default:
+            return <p>Component has not been made...YET</p>
         }
       })}
       <input type="submit" value="Submit" />
