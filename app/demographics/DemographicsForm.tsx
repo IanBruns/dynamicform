@@ -38,7 +38,7 @@ export default async function DemographicsForm() {
       {} as Record<string, string | string[]>,
     )
 
-    localStorage.setItem("demographicsFormData", JSON.stringify(packagedData))
+    console.log(packagedData)
   }
 
   return <DynamicForm formData={demographicFormData} action={submit} />
