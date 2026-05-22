@@ -13,6 +13,7 @@ export default async function DemographicsForm() {
 
   async function submit(newFormData: FormData) {
     "use server"
+    const supabase = await createClient()
     const packagedData = demographicFormData.elements.reduce(
       (
         acc: Record<string, string | string[] | unknown>,
@@ -39,7 +40,15 @@ export default async function DemographicsForm() {
       {} as Record<string, string | string[]>,
     )
 
-    console.log(packagedData)
+    const { error } = await supabase.from("submitted_forms").insert([
+      {
+        name: demographicFormData.name,
+        form_data: packagedData,
+      },
+    ])
+    if (error?.message) {
+      console.error(error.message)
+    }
   }
 
   return demographicFormData.id ? (
