@@ -14,7 +14,7 @@ From there I create a series of switch and case statements allowing us to render
 
 ## What I left out
 
-My submit handlers have packaged the data, but I have haven't hooked them up to any tables. I save this for last because I think an agnostic fron end like a dynamic form wouldn't care too much about where the data is going after and so as long as it knows how to get the formdata to a parent component said parent component will know what to do with it (for example, the form could submit to an endpoint, save to localStorage, render new ui entirely!)
+Currently the only forms that exist are whatever forms I add manually to the database, meaning that forms can be dynamically rendered, but not currently dynamically generated. While looking cool, I wanted to make sure I could have a fully supported api that handleded the rendering so that anything that is inserted into the forms table doesn't need to be edited back out if constraints change, but with the configs we could start work to do that
 
 ## Next steps
 
@@ -26,4 +26,4 @@ I would love for the ability to pass custom stylesheets, currently you can throw
 
 I think with more time I would also add more components to the table and with that create more forms to demo
 
-I would also want to spend more time on the form control. While we can use the native required field on input elements, would want to spend more time making sure that the submit button cannot send until required fields have been filled out
+I would also want to spend more time on the form control. While we can use the native required field on input elements, would want to spend more time making sure that the submit button cannot send until required fields have been filled out.
