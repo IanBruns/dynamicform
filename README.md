@@ -14,7 +14,9 @@ From there I create a series of switch and case statements allowing us to render
 
 ## What I left out
 
-Currently the only forms that exist are whatever forms I add manually to the database, meaning that forms can be dynamically rendered, but not currently dynamically generated. While looking cool, I wanted to make sure I could have a fully supported api that handleded the rendering so that anything that is inserted into the forms table doesn't need to be edited back out if constraints change, but with the configs we could start work to do that
+Currently the only forms that exist are whatever forms I add manually to the database, meaning that forms can be dynamically rendered, but not currently dynamically generated. I wanted to make sure I could have a fully supported api that handleded the rendering so that anything that is inserted into the forms table doesn't need to be edited back out if constraints change, but with the configs we could start work to do that
+
+If I were to implement it I would look also into using the <Dynamicform /> to make the submission form
 
 ## Next steps
 
