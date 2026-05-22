@@ -13,6 +13,7 @@ export default async function LoginForm() {
 
   async function submit(newFormData: FormData) {
     "use server"
+    const supabase = await createClient()
     const data = Object.fromEntries(newFormData.entries())
 
     const { error } = await supabase.from("submitted_forms").insert([
