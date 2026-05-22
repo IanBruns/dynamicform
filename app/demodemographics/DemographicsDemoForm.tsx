@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server"
 import DynamicForm from "../components/DynamicForm"
 import EmptyState from "../components/EmptyState"
 
-export default async function DemographicsForm() {
+export default async function DemographicsDemoForm() {
   const supabase = await createClient()
 
   const { data: demographicFormData } = await supabase

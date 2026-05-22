@@ -4,6 +4,16 @@ By: Ian Bruns
 
 ## Steps to run
 
+### Install
+
+Once you clone this repository just run `yarn install` to get all dependencies
+
+Supabase needs a `.env.local` file with 2 key, please ask the repo owner for access
+
+### Login
+
+To access any page but the home directory a username and password will be recorded. This is ONLY saved on the supabase database project and after you are done please contact repo owner to be removed if asked
+
 ## My Approach
 
 Most of my time in the drafting process was spent thinking about the back end end and the databasing. I wanted to create a database structure that allowed for the most extendability and made open to future considerations. In this I created 2 tables, one for the forms (as a json binary string) and a second for the elements themselves. This also allows for "custom" ui (still using the HTML conventions)
