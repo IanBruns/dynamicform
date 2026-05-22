@@ -14,7 +14,16 @@ export default async function LoginForm() {
   async function submit(newFormData: FormData) {
     "use server"
     const data = Object.fromEntries(newFormData.entries())
-    console.log(data)
+
+    const { error } = await supabase.from("submitted_forms").insert([
+      {
+        name: loginFormData.name,
+        form_data: data,
+      },
+    ])
+    if (error?.message) {
+      console.error(error.message)
+    }
   }
 
   return loginFormData.id ? (
