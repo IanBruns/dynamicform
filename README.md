@@ -6,7 +6,7 @@ By: Ian Bruns
 
 ### Install
 
-Once you clone this repository just run `yarn install` to install all dependencies
+Once you clone this repository just run `yarn install` to install all dependencies, and `yarn run dev` to start the dev environment
 
 Supabase needs a `.env.local` file with 2 keys, please ask the repo owner for access
 
